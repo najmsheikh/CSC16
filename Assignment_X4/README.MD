@@ -12,4 +12,4 @@
 3. Follow on-screen instructions
 	1. Enter the entire postfix expression and press enter.
 
-> Try entering a multi-digit number
+> Try entering a multi-digit number. Also try operators such as ^ and %.

@@ -20,8 +20,9 @@ Stack handleExp(string exp) {
     char token;                     // character in exp
     Stack opStack;                  // stack of operands
     for (int i = 0; i < exp.length(); ++i) {
-        int top,
-            bottom;
+        int top,                    // Top of the stack
+            bottom,                 // Second in the stack
+            prod;                   // For use with Exponentiation
         token = exp[i];
         switch (token) {
         case ' ' :                  // Ignore whitespace
@@ -56,6 +57,25 @@ Stack handleExp(string exp) {
             bottom = opStack.top();
             opStack.pop();
             opStack.push(bottom / top);
+            opStack.display();
+            break;
+        case '%' :                  // Handle Remainder
+            top = opStack.top();
+            opStack.pop();
+            bottom = opStack.top();
+            opStack.pop();
+            opStack.push(bottom % top);
+            opStack.display();
+            break;
+        case '^' :                  // Handle Exponentiation
+            top = opStack.top();
+            opStack.pop();
+            bottom = opStack.top();
+            opStack.pop();
+            prod = bottom;
+            for(int i = 1; i < top; ++i)
+                prod *= bottom;
+            opStack.push(prod);
             opStack.display();
             break;
 
